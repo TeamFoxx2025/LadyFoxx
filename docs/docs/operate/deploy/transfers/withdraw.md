@@ -69,7 +69,7 @@ This command withdraws ERC-20 tokens from an Edge-powered chain to a rootchain.
 - Replace `child_chain_json_rpc_endpoint` with the JSON-RPC endpoint of the Edge-powered chain.
 
 ```bash
- ./polygon-edge bridge withdraw-erc20 \
+ ./foxx-chain bridge withdraw-erc20 \
     --sender-key <hex_encoded_txn_sender_private_key> \
     --receivers <receivers_addresses> \
     --amounts <amounts> \
@@ -89,7 +89,7 @@ This command withdraws ERC-20 tokens from an Edge-powered chain to a rootchain.
 - The JSON-RPC endpoint for the Edge-powered chain is `http://json-rpc-endpoint.com:8545`.
 
 ```bash
-./polygon-edge bridge withdraw-erc20 \
+./foxx-chain bridge withdraw-erc20 \
     --sender-key 0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef \
     --receivers 0x1111111111111111111111111111111111111111,0x2222222222222222222222222222222222222222 \
     --amounts 100,200 \
@@ -111,7 +111,7 @@ This command sends an exit transaction to the `ExitHelper` contract on the rootc
 - Replace `child_chain_json_rpc_endpoint` with the JSON-RPC endpoint of the Edge-powered chain.
 
 ```bash
-./polygon-edge bridge exit \
+./foxx-chain bridge exit \
     --sender-key <hex_encoded_txn_sender_private_key> \
     --exit-helper <exit_helper_address> \
     --exit-id <exit_event_id> \
@@ -130,7 +130,7 @@ In this example, we're sending an exit transaction on a test Edge instance:
 - The JSON-RPC endpoint for the rootchain is `http://root-chain-json-rpc-endpoint.com:8545`, and the JSON-RPC endpoint for the Edge-powered chain is `http://json-rpc-endpoint.com:8545`.
 
 ```bash
-./polygon-edge bridge exit \
+./foxx-chain bridge exit \
     --sender-key 0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef \
     --exit-helper 0x123456789abcdef0123456789abcdef01234567 \
     --exit-id 42 \
@@ -160,7 +160,7 @@ This command withdraws ERC-721 tokens from an Edge-powered chain to a rootchain.
 - Replace `child_chain_json_rpc_endpoint` with the JSON-RPC endpoint of the Edge-powered chain.
 
 ```bash
-./polygon-edge bridge withdraw-erc721 \
+./foxx-chain bridge withdraw-erc721 \
     --sender-key <hex_encoded_sender_private_key> \
     --receivers <receivers_addresses> \
     --token-ids <token_ids> \
@@ -193,7 +193,7 @@ This command sends an exit transaction to the `ExitHelper` contract on the rootc
 - Replace `child_chain_json_rpc_endpoint` with the JSON-RPC endpoint of the Edge-powered chain.
 
 ```bash
-./polygon-edge bridge exit \
+./foxx-chain bridge exit \
     --sender-key <hex_encoded_txn_sender_private_key> \
     --exit-helper <exit_helper_address> \
     --exit-id <exit_event_id> \
@@ -212,7 +212,7 @@ In this example, we're sending an exit transaction on a test Edge instance:
 - The JSON-RPC endpoint for the rootchain is `http://root-chain-json-rpc-endpoint.com:8545`, and the JSON-RPC endpoint for the Edge-powered chain is `http://json-rpc-endpoint.com:8545`.
 
 ```bash
-./polygon-edge bridge exit \
+./foxx-chain bridge exit \
     --sender-key 0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef \
     --exit-helper 0x123456789abcdef0123456789abcdef01234567 \
     --exit-id 42 \
@@ -243,7 +243,7 @@ This command withdraws ERC-1155 tokens from the Edge-powered chain to the rootch
 - Replace `child_chain_json_rpc_endpoint` with the JSON-RPC endpoint of the Edge-powered chain.
 
 ```bash
-./polygon-edge bridge withdraw-erc1155 \
+./foxx-chain bridge withdraw-erc1155 \
     --sender-key <hex_encoded_withdrawer_private_key> \
     --receivers <receivers_addresses> \
     --amounts <amounts> \
@@ -266,7 +266,7 @@ In this example, we're withdrawing ERC-1155 tokens from a test Edge instance to 
 - The JSON-RPC endpoint for the Edge-powered chain is `http://json-rpc-endpoint.com:8545`.
 
 ```bash
-./polygon-edge bridge withdraw-erc1155 \
+./foxx-chain bridge withdraw-erc1155 \
     --sender-key 0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef \
     --receivers 0x1111111111111111111111111111111111111111 \
     --amounts 100 \
@@ -289,7 +289,7 @@ This command sends an exit transaction to the `ExitHelper` contract on the rootc
 - Replace `child_chain_json_rpc_endpoint` with the JSON-RPC endpoint of the Edge-powered chain.
 
 ```bash
-./polygon-edge bridge exit \
+./foxx-chain bridge exit \
     --sender-key <hex_encoded_txn_sender_private_key> \
     --exit-helper <exit_helper_address> \
     --exit-id <exit_event_id> \
@@ -308,7 +308,7 @@ In this example, we're sending an exit transaction on a test Edge instance:
 - The JSON-RPC endpoint for the rootchain is `http://root-chain-json-rpc-endpoint.com:8545`, and the JSON-RPC endpoint for the Edge-powered chain is `http://json-rpc-endpoint.com:8545`.
 
 ```bash
-./polygon-edge bridge exit \
+./foxx-chain bridge exit \
     --sender-key 0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef \
     --exit-helper 0x123456789abcdef0123456789abcdef01234567 \
     --exit-id 42 \

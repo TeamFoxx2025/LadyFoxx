@@ -1,4 +1,4 @@
-site_name: Polygon Edge docs
+site_name: foxx-chain docs
 
 theme:
   name: material
@@ -12,7 +12,7 @@ nav:
       - Overview:  design/overview.md
       - Consensus:
           - Consensus protocol: design/consensus/polybft/protocol.md
-          - Polygon Byzantine Fault Tolerance (PolyBFT): design/consensus/polybft/overview.md
+          - LADYFOXX Byzantine Fault Tolerance (PolyBFT): design/consensus/polybft/overview.md
           - Istanbul Byzantine Fault Tolerance (IBFT) 2.0:  design/consensus/polybft/ibft.md
       - Bridge:
           - Overview:  design/bridge/overview.md

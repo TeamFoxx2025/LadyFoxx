@@ -3,7 +3,7 @@ package polybft
 import (
 	"fmt"
 
-	ibftProto "github.com/0xPolygon/go-ibft/messages/proto"
+	ibftProto "github.com/tarality/0xTaral/messages/proto"
 	polybftProto "github.com/TeamFoxx2025/LadyFoxx/consensus/polybft/proto"
 	"github.com/TeamFoxx2025/LadyFoxx/types"
 	"github.com/libp2p/go-libp2p/core/peer"

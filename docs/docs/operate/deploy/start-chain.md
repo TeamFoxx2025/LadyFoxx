@@ -1,5 +1,5 @@
 
-To run an Edge cluster, we use the `polygon-edge server` command with the following options:
+To run an Edge cluster, we use the `foxx-chain server` command with the following options:
 
 <details>
 <summary>Flags ↓</summary>
@@ -10,7 +10,7 @@ To run an Edge cluster, we use the `polygon-edge server` command with the follow
 | `--block-gas-target`             | The target block gas limit for the chain.                                                                                                   | `--block-gas-target "0x0"`                 |
 | `--chain`                        | The genesis file used for starting the chain.                                                                                               | `--chain "./genesis.json"`                 |
 | `--config`                       | The path to the CLI config.                                                                                                                 | `--config "/path/to/config.json"`          |
-| `--data-dir`                     | The data directory used for storing Polygon Edge client data.                                                                               | `--data-dir "/path/to/data-dir"`           |
+| `--data-dir`                     | The data directory used for storing foxx-chain client data.                                                                               | `--data-dir "/path/to/data-dir"`           |
 | `--dns`                          | The host DNS address which can be used by a remote peer for connection.                                                                     | `--dns "example.com"`                      |
 | `--grpc-address`                 | The GRPC interface.                                                                                                                         | `--grpc-address "127.0.0.1:9632"`          |
 | `--json-rpc-batch-request-limit` | Max length to be considered when handling JSON-RPC batch requests.                                                                          | `--json-rpc-batch-request-limit 20`        |
@@ -37,13 +37,13 @@ To run an Edge cluster, we use the `polygon-edge server` command with the follow
 </details>
 
   ```bash
-  ./polygon-edge server --data-dir ./test-chain-1 --chain genesis.json --grpc-address :5001 --libp2p :30301 --jsonrpc :10001 --seal --log-level DEBUG
+  ./foxx-chain server --data-dir ./test-chain-1 --chain genesis.json --grpc-address :5001 --libp2p :30301 --jsonrpc :10001 --seal --log-level DEBUG
 
-  ./polygon-edge server --data-dir ./test-chain-2 --chain genesis.json --grpc-address :5002 --libp2p :30302 --jsonrpc :10002 --seal --log-level DEBUG
+  ./foxx-chain server --data-dir ./test-chain-2 --chain genesis.json --grpc-address :5002 --libp2p :30302 --jsonrpc :10002 --seal --log-level DEBUG
 
-  ./polygon-edge server --data-dir ./test-chain-3 --chain genesis.json --grpc-address :5003 --libp2p :30303 --jsonrpc :10003 --seal --log-level DEBUG
+  ./foxx-chain server --data-dir ./test-chain-3 --chain genesis.json --grpc-address :5003 --libp2p :30303 --jsonrpc :10003 --seal --log-level DEBUG
 
-  ./polygon-edge server --data-dir ./test-chain-4 --chain genesis.json --grpc-address :5004 --libp2p :30304 --jsonrpc :10004 --seal --log-level DEBUG
+  ./foxx-chain server --data-dir ./test-chain-4 --chain genesis.json --grpc-address :5004 --libp2p :30304 --jsonrpc :10004 --seal --log-level DEBUG
   ```
 
 <details>

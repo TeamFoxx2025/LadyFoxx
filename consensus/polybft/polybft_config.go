@@ -18,8 +18,8 @@ const (
 	ConsensusName              = "polybft"
 	minNativeTokenParamsNumber = 4
 
-	defaultNativeTokenName     = "Polygon"
-	defaultNativeTokenSymbol   = "MATIC"
+	defaultNativeTokenName     = "LadyFoxx"
+	defaultNativeTokenSymbol   = "LDFX"
 	defaultNativeTokenDecimals = uint8(18)
 )
 

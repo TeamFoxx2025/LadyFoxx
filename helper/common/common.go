@@ -30,12 +30,7 @@ var (
 
 	errInvalidDuration = errors.New("invalid duration")
 
-	IBFTImportantNotice = "***** IMPORTANT NOTICE: IBFT consensus protocol is about to be" +
-		" removed from the Edge in the following release. *****\n" +
-		"Please migrate to the PolyBFT protocol and plan your activities accordingly.\n" +
-		"More information on how to execute the migration process can be found here" +
-		"(https://wiki.polygon.technology/docs/edge/operate/ibft-to-polybft/)."
-)
+	IBFTImportantNotice = "More information on how to execute the migration process can be found here" )
 
 // RetryForever will execute a function until it completes without error or
 // the context is cancelled or expired.

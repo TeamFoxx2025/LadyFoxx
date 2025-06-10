@@ -24,7 +24,7 @@ var (
 )
 
 /*
-Run: ./polygon-edge regenesis history --triedb "path_to_triedb" --chaindb "path_to_blockchain_db"
+Run: ./foxx-chain regenesis history --triedb "path_to_triedb" --chaindb "path_to_blockchain_db"
 */
 func HistoryTestCmd() *cobra.Command {
 	historyTestCMD := &cobra.Command{

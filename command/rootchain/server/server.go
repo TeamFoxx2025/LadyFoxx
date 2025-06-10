@@ -27,7 +27,7 @@ import (
 )
 
 const (
-	gethConsoleImage = "ghcr.io/0xpolygon/go-ethereum-console:latest"
+	gethConsoleImage = "ghcr.io/TeamFoxx2025/go-ethereum-console:latest"
 	gethImage        = "ethereum/client-go:v1.9.25"
 
 	defaultHostIP   = "127.0.0.1"

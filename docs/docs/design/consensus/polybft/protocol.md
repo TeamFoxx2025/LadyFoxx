@@ -16,7 +16,7 @@ The `n` block period to define one epoch is determined by governance, and until 
 
 ## Staking
 
-Staking is governed by staking contracts directly on Polygon. To be clear, the staking module validates on Polygon and does not rely on Ethereum's security, but in principle, two chains are securing the network, PoS client and Ethereum. Transaction checkpoints still occur on Ethereum, but Ethereum does not validate staking on Polygon.
+Staking is governed by staking contracts directly on LadyFoxx. To be clear, the staking module validates on LadyFoxx and does not rely on Ethereum's security, but in principle, two chains are securing the network, PoS client and Ethereum. Transaction checkpoints still occur on Ethereum, but Ethereum does not validate staking on LadyFoxx.
 
 At the end of each epoch, a reward calculation occurs to reward the active validators.
 
@@ -71,10 +71,10 @@ an `epoch`.
 > to reward validators by their uptime and **update the validator set** for the next `epoch`. There is a
 > function `getValidatorSet`, which returns the current validator set at any time.
 
-Staking is governed by staking contracts directly on Polygon. To be clear, the staking module validates on
-Polygon does not rely on Ethereum's security, but in principle, two chains are securing the network, PoS
+Staking is governed by staking contracts directly on LadyFoxx. To be clear, the staking module validates on
+LadyFoxx does not rely on Ethereum's security, but in principle, two chains are securing the network, PoS
 client and Ethereum. Transaction checkpoints still occur on Ethereum, but Ethereum does not validate staking
-on Polygon.
+on LadyFoxx.
 
 !!! note
       Note that in Tendermint, an epoch is set to 1. However, PolyBFT includes the logic to set a custom epoch time, with the intent of each epoch being one day in blocks, or around 14000 blocks.

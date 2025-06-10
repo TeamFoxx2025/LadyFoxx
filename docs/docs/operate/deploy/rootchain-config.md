@@ -22,11 +22,11 @@ values={[
 
 ### i. Start the Geth Node
 
-The `polygon-edge` rootchain server command starts an ethereum/client-go container, which runs a new Geth node.
+The `foxx-chain` rootchain server command starts an ethereum/client-go container, which runs a new Geth node.
 To do this, open a new terminal session and run:
 
   ```bash
-  ./polygon-edge rootchain server
+  ./foxx-chain rootchain server
   ```
 
 <details>
@@ -35,9 +35,9 @@ To do this, open a new terminal session and run:
 You should see output similar to the following, indicating that the rootchain server is now running:
 
   ```bash
-  {"status":"Pulling from 0xpolygon/go-ethereum-console","id":"latest"}
+  {"status":"Pulling from TeamFoxx2025/go-ethereum-console","id":"latest"}
   {"status":"Digest: sha256:6aad124b6775b96d05c94850dcafde45911f7bb2b473328dc4a792b1ffb2bdb6"}
-  {"status":"Status: Image is up to date for ghcr.io/0xpolygon/go-ethereum-console:latest"}
+  {"status":"Status: Image is up to date for ghcr.io/TeamFoxx2025/go-ethereum-console:latest"}
   INFO [05-04|09:48:51.496] Starting Geth in ephemeral dev mode...
   WARN [05-04|09:48:51.498] You are running Geth in --dev mode. Please note the following:
 
@@ -135,7 +135,7 @@ If you have already deployed the StakeManager, you may skip the step and move on
 If the `StakeManager` hasn't been deployed to the rootchain, you need to carry out this step. This command also contains a test flag. This flag is strictly for testing purposes, and its usage results in deploying a mock ERC-20 token that will serve for staking.
 
   ```bash
-  ./polygon-edge polybft stake-manager-deploy \
+  ./foxx-chain polybft stake-manager-deploy \
     --proxy-contracts-admin 0xaddressOfProxyContractsAdmin \
     --private-key <hex_encoded_rootchain_account_private_key> \
     --genesis ./genesis.json \
@@ -150,7 +150,7 @@ If the `StakeManager` hasn't been deployed to the rootchain, you need to carry o
 | Flag                         | Description                                                                   | Example                                         |
 |------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------|
 | `--config`                   | The path to the SecretsManager config file. If omitted, the local FS secrets manager is used. | `--config /path/to/config`                  |
-| `--data-dir`                 | The directory for the Polygon Edge data if the local FS is used.              | `--data-dir test-chain-`                     |
+| `--data-dir`                 | The directory for the LadyFoxx data if the local FS is used.              | `--data-dir test-chain-`                     |
 | `--genesis`                  | Genesis file path, which contains chain configuration.                        | `--genesis ./genesis.json`                    |
 | `-h, --help`                 | Help for stake-manager-deploy.                                                |                                                 |
 | `--jsonrpc`                  | The JSON-RPC interface.                                                       | `--jsonrpc http://0.0.0.0:8545`              |
@@ -163,7 +163,7 @@ If the `StakeManager` hasn't been deployed to the rootchain, you need to carry o
 
 ## 2. Deployment Considerations
 
-To deploy the rootchain contracts, we use the `polygon-edge rootchain deploy` command. Before deployment, consider the following actions:
+To deploy the rootchain contracts, we use the `foxx-chain rootchain deploy` command. Before deployment, consider the following actions:
 
 ### i. Funding Required for Nodes
 
@@ -175,8 +175,8 @@ Note that the demo server already funds the default test account. If you're not 
 failed to deploy rootchain contracts: {"code":-32000,"message":"INTERNAL_ERROR: insufficient funds"}
 ```
 
-You can also create a rootchain wallet and fund the nodes by using `polygon-cli`.
-Follow the steps outlined [<ins>here</ins>](https://github.com/maticnetwork/polygon-cli).
+You can also create a rootchain wallet and fund the nodes by using `foxx-cli`.
+Follow the steps outlined [<ins>here</ins>](https://github.com/maticnetwork/foxx-cli).
 
 ### ii. Using an Existing ERC-20 as the Native Gas Token
 
@@ -186,7 +186,7 @@ If you already have an ERC-20 token deployed on the rootchain that you want to u
 <summary>Example ↓</summary>
 
 ```bash
-./polygon-edge rootchain deploy \
+./foxx-chain rootchain deploy \
   --genesis ./genesis.json \
   --json-rpc http://127.0.0.1:8545 \
   --erc20-token <ERC20_TOKEN_ADDRESS>
@@ -242,7 +242,7 @@ To run the deployment in test mode and use the test account provided by the Geth
 </details>
 
   ```bash
-  ./polygon-edge rootchain deploy \
+  ./foxx-chain rootchain deploy \
     --deployer-key <hex_encoded_rootchain_account_private_key> \
     --stake-manager <address_of_stake_manager_contract> \
     --stake-token 0xaddressOfStakeToken \
@@ -396,7 +396,7 @@ If you have already deployed the StakeManager, you may skip the step and move on
 This command includes a test flag, which is intended solely for testing scenarios. When this flag is used, a mock ERC-20 token is deployed for staking. However, in non-testing environments, remember to specify the `stake-token` flag with the address of the token that's already deployed on the rootchain and will be used for staking.
 
   ```bash
-  ./polygon-edge polybft stake-manager-deploy \
+  ./foxx-chain polybft stake-manager-deploy \
     --proxy-contracts-admin 0xaddressOfProxyContractsAdmin \
     --deployer-key <hex_encoded_rootchain_account_private_key> \
     --genesis ./genesis.json \
@@ -411,7 +411,7 @@ This command includes a test flag, which is intended solely for testing scenario
 | Flag            | Description                                                                                            | Example |
 |-----------------|--------------------------------------------------------------------------------------------------------|---------|
 | `--config`      | Path to the SecretsManager config file, if omitted, the local FS secrets manager is used               |         |
-| `--data-dir`    | Directory for the Polygon Edge data if the local FS is used                                            |         |
+| `--data-dir`    | Directory for the LadyFoxx data if the local FS is used                                            |         |
 | `--genesis`     | Genesis file path, which contains chain configuration (default "./genesis.json")                       |         |
 | `--jsonrpc`     | The JSON-RPC interface (default "0.0.0.0:8545")                                                        |         |
 | `--private-key` | Hex-encoded private key of the account which executes rootchain commands                               |         |
@@ -422,7 +422,7 @@ This command includes a test flag, which is intended solely for testing scenario
 
 ## 2. Deployment Considerations
 
-To deploy the rootchain contracts, we use the `polygon-edge rootchain deploy` command. Before deployment, consider the following actions:
+To deploy the rootchain contracts, we use the `foxx-chain rootchain deploy` command. Before deployment, consider the following actions:
 
 ### i. Funding Required for Nodes
 
@@ -434,8 +434,8 @@ Note that the demo server already funds the default test account. If you're not 
 failed to deploy rootchain contracts: {"code":-32000,"message":"INTERNAL_ERROR: insufficient funds"}
 ```
 
-You can also create a rootchain wallet and fund the nodes by using `polygon-cli`.
-Follow the steps outlined [<ins>here</ins>](https://github.com/maticnetwork/polygon-cli).
+You can also create a rootchain wallet and fund the nodes by using `foxx-cli`.
+Follow the steps outlined [<ins>here</ins>](https://github.com/maticnetwork/foxx-cli).
 
 ### ii. Using an Existing ERC-20 as the Native Gas Token
 
@@ -445,7 +445,7 @@ If you already have an ERC-20 token deployed on the rootchain that you want to u
 <summary>Example ↓</summary>
 
 ```bash
-./polygon-edge rootchain deploy \
+./foxx-chain rootchain deploy \
   --genesis ./genesis.json \
   --json-rpc http://127.0.0.1:8545 \
   --erc20-token <ERC20_TOKEN_ADDRESS>
@@ -479,7 +479,7 @@ You also need to specify the path to the genesis file using the `--genesis` opti
 </details>
 
 ```bash
-./polygon-edge rootchain deploy \
+./foxx-chain rootchain deploy \
   --deployer-key 0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef \
   --genesis ./genesis.json \
   --json-rpc http://127.0.0.1:8545 \
@@ -617,7 +617,7 @@ Address=0xFE5E166BA5EA50c04fCa00b07b59966E6C2E9570; Balance=10000000000000000000
 
 Before deploying validator nodes on the Edge-powered chain, we need to ensure that the validators have sufficient funds on the rootchain network. It's crucial to have enough funds in the validator account, as they need to cover the gas fees associated with their transactions on the rootchain.
 
-To fund the validators' accounts on the rootchain, we use the `polygon-edge rootchain fund` command. When executed with the appropriate flags, it will:
+To fund the validators' accounts on the rootchain, we use the `foxx-chain rootchain fund` command. When executed with the appropriate flags, it will:
 
 1. Retrieve the validator account from the secrets manager.
 2. Send a transaction to fund the validator account on the rootchain with a value of 10,000 $token (the network's native token).
@@ -630,7 +630,7 @@ In a production environment, you would need to ensure that the validators have s
 Here's an example of how to fund a validator account (replace address value with your own):
 
   ```bash
-  ./polygon-edge rootchain fund --addresses 0x77C1eedFf656477462ce16084fE5Dc7F8a2507B9 --amounts 1000000000000000000
+  ./foxx-chain rootchain fund --addresses 0x77C1eedFf656477462ce16084fE5Dc7F8a2507B9 --amounts 1000000000000000000
   ```
 
 <details>

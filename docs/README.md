@@ -1,6 +1,6 @@
-# Polygon Edge docs
+# LadyFoxx Edge docs
 
-Welcome to the Polygon Edge documentation, built with [the Material theme for MkDocs](https://squidfunk.github.io/mkdocs-material/).
+Welcome to the LadyFoxx Edge documentation, built with [the Material theme for MkDocs](https://squidfunk.github.io/mkdocs-material/).
 
 ## Build and serve the site
 
@@ -8,7 +8,7 @@ Welcome to the Polygon Edge documentation, built with [the Material theme for Mk
 
 ```sh
 https://github.com/TeamFoxx2025/LadyFoxx.git
-cd polygon-edge/docs
+cd foxx-chain/docs
 ```
 
 ### Run with Python
@@ -36,7 +36,7 @@ The site runs at: http://127.0.0.1:8000/
 1. Spin up the image:
 
 ```sh
-docker build -t polygon-edge-docs .
+docker build -t foxx-chain-docs .
 ```
 
 2. Run the container:

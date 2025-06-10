@@ -7,7 +7,7 @@ This is a helper command, which allows sending deposits from root to child chain
 This is a helper command which deposits ERC20 tokens from the root chain to the child chain
 
 ```bash
-$ polygon-edge bridge deposit-erc20 \
+$ foxx-chain bridge deposit-erc20 \
     --sender-key <hex_encoded_depositor_private_key> \
     --receivers <receivers_addresses> \
     --amounts <amounts> \
@@ -24,7 +24,7 @@ $ polygon-edge bridge deposit-erc20 \
 This is a helper command which withdraws ERC20 tokens from the child chain to the root chain
 
 ```bash
-$ polygon-edge bridge withdraw-erc20 \
+$ foxx-chain bridge withdraw-erc20 \
     --sender-key <hex_encoded_txn_sender_private_key> \
     --receivers <receivers_addresses> \
     --amounts <amounts> \
@@ -38,7 +38,7 @@ $ polygon-edge bridge withdraw-erc20 \
 This is a helper command which qeuries child chain for exit event proof and sends an exit transaction to ExitHelper smart contract.
 
 ```bash
-$ polygon-edge bridge exit \
+$ foxx-chain bridge exit \
     --sender-key <hex_encoded_txn_sender_private_key> \
     --exit-helper <exit_helper_address> \
     --exit-id <exit_event_id> \

@@ -63,7 +63,7 @@ The deployment guides will cover the steps outlined below. If you are deploying 
 1. Init secrets:
 
    ```bash
-   ./polygon-edge polybft-secrets --data-dir test-chain- --num 4
+   ./foxx-chain polybft-secrets --data-dir test-chain- --num 4
    ```
 
 2. Create chain configuration:
@@ -71,12 +71,12 @@ The deployment guides will cover the steps outlined below. If you are deploying 
    Single host:
 
    ```bash
-   ./polygon-edge genesis --block-gas-limit 10000000 --epoch-size 10 [--validators-path ./] [--validators-prefix test-chain-] [--consensus polybft] [--reward-wallet address:amount]
+   ./foxx-chain genesis --block-gas-limit 10000000 --epoch-size 10 [--validators-path ./] [--validators-prefix test-chain-] [--consensus polybft] [--reward-wallet address:amount]
 
    Multi-host:
 
    ```bash
-   ./polygon-edge genesis --block-gas-limit 10000000 --epoch-size 10 --validators /ip4/127.0.0.1/tcp/30301/p2p/16Uiu2HAmV5hqAp77untfJRorxqKmyUxgaVn8YHFjBJm9gKMms3mr:0xDcBe0024206ec42b0Ef4214Ac7B71aeae1A11af0:1cf134e02c6b2afb2ceda50bf2c9a01da367ac48f7783ee6c55444e1cab418ec0f52837b90a4d8cf944814073fc6f2bd96f35366a3846a8393e3cb0b19197cde23e2b40c6401fa27ff7d0c36779d9d097d1393cab6fc1d332f92fb3df850b78703b2989d567d1344e219f0667a1863f52f7663092276770cf513f9704b5351c4:11b18bde524f4b02258a8d196b687f8d8e9490d536718666dc7babca14eccb631c238fb79aa2b44a5a4dceccad2dd797f537008dda185d952226a814c1acf7c2]
+   ./foxx-chain genesis --block-gas-limit 10000000 --epoch-size 10 --validators /ip4/127.0.0.1/tcp/30301/p2p/16Uiu2HAmV5hqAp77untfJRorxqKmyUxgaVn8YHFjBJm9gKMms3mr:0xDcBe0024206ec42b0Ef4214Ac7B71aeae1A11af0:1cf134e02c6b2afb2ceda50bf2c9a01da367ac48f7783ee6c55444e1cab418ec0f52837b90a4d8cf944814073fc6f2bd96f35366a3846a8393e3cb0b19197cde23e2b40c6401fa27ff7d0c36779d9d097d1393cab6fc1d332f92fb3df850b78703b2989d567d1344e219f0667a1863f52f7663092276770cf513f9704b5351c4:11b18bde524f4b02258a8d196b687f8d8e9490d536718666dc7babca14eccb631c238fb79aa2b44a5a4dceccad2dd797f537008dda185d952226a814c1acf7c2]
    ```
 
 3. Deploy and initialize rootchain contracts:
@@ -84,41 +84,41 @@ The deployment guides will cover the steps outlined below. If you are deploying 
    [FOR GETH ONLY] Start rootchain server:
 
    ```bash
-   ./polygon-edge rootchain server
+   ./foxx-chain rootchain server
    ```
 
    ```bash
-   ./polygon-edge rootchain deploy --deployer-key <hex_encoded_rootchain_account_private_key> [--genesis ./genesis.json] [--json-rpc http://127.0.0.1:8545] [--test]
+   ./foxx-chain rootchain deploy --deployer-key <hex_encoded_rootchain_account_private_key> [--genesis ./genesis.json] [--json-rpc http://127.0.0.1:8545] [--test]
    ```
 
 4. Fund validators on rootchain:
 
    ```bash
-   ./polygon-edge rootchain fund --data-dir ./test-chain-1
+   ./foxx-chain rootchain fund --data-dir ./test-chain-1
    ```
 
 5. Allowlist validators on rootchain:
 
    ```bash
-   ./polygon-edge polybft whitelist-validators --private-key <hex_encoded_rootchain_account_private_key_of_supernetManager_deployer> --addresses <addresses_of_validators> --supernet-manager <address_of_SupernetManager_contract>
+   ./foxx-chain polybft whitelist-validators --private-key <hex_encoded_rootchain_account_private_key_of_supernetManager_deployer> --addresses <addresses_of_validators> --supernet-manager <address_of_SupernetManager_contract>
    ```
 
 6. Register validators on rootchain:
 
    ```bash
-   ./polygon-edge polybft register-validator --data-dir ./test-chain-1 --supernet-manager <address_of_SupernetManager_contract>
+   ./foxx-chain polybft register-validator --data-dir ./test-chain-1 --supernet-manager <address_of_SupernetManager_contract>
    ```
 
 7. Initial staking on rootchain:
 
    ```bash
-   ./polygon-edge polybft stake --data-dir ./test-chain-1 --chain-id <id_of_child_chain_from_genesis> --amount <amount_of_tokens_to_stake> --stake-manager <address_of_StakeManager_contract> --native-root-token <address_of_native_root_token>
+   ./foxx-chain polybft stake --data-dir ./test-chain-1 --chain-id <id_of_child_chain_from_genesis> --amount <amount_of_tokens_to_stake> --stake-manager <address_of_StakeManager_contract> --native-root-token <address_of_native_root_token>
    ```
 
 8. Finalize genesis validator set on rootchain:
 
    ```bash
-    ./polygon-edge polybft supernet --private-key <hex_encoded_rootchain_account_private_key_of_supernetManager_deployer> \
+    ./foxx-chain polybft supernet --private-key <hex_encoded_rootchain_account_private_key_of_supernetManager_deployer> \
     --genesis <path_to_genesis_file> \
     --supernet-manager <address_of_SupernetManager_contract> \
     --stake-manager <address_of_StakeManager_contract> \
@@ -128,23 +128,23 @@ The deployment guides will cover the steps outlined below. If you are deploying 
 9. Run (child chain) cluster:
 
     ```bash
-    ./polygon-edge server --data-dir ./test-chain-1 --chain genesis.json --grpc-address :5001 --libp2p :30301 --jsonrpc :10001 \
+    ./foxx-chain server --data-dir ./test-chain-1 --chain genesis.json --grpc-address :5001 --libp2p :30301 --jsonrpc :10001 \
     --seal --log-level DEBUG
 
-    ./polygon-edge server --data-dir ./test-chain-2 --chain genesis.json --grpc-address :5002 --libp2p :30302 --jsonrpc :10002 \
+    ./foxx-chain server --data-dir ./test-chain-2 --chain genesis.json --grpc-address :5002 --libp2p :30302 --jsonrpc :10002 \
     --seal --log-level DEBUG
 
-    ./polygon-edge server --data-dir ./test-chain-3 --chain genesis.json --grpc-address :5003 --libp2p :30303 --jsonrpc :10003 \
+    ./foxx-chain server --data-dir ./test-chain-3 --chain genesis.json --grpc-address :5003 --libp2p :30303 --jsonrpc :10003 \
     --seal --log-level DEBUG
 
-    ./polygon-edge server --data-dir ./test-chain-4 --chain genesis.json --grpc-address :5004 --libp2p :30304 --jsonrpc :10004 \
+    ./foxx-chain server --data-dir ./test-chain-4 --chain genesis.json --grpc-address :5004 --libp2p :30304 --jsonrpc :10004 \
     --seal --log-level DEBUG
     ```
 
     Starting node in relayer mode:
 
     ```bash
-    ./polygon-edge server --data-dir ./test-chain-1 --chain genesis.json --grpc-address :5001 --libp2p :30301 --jsonrpc :10001 \
+    ./foxx-chain server --data-dir ./test-chain-1 --chain genesis.json --grpc-address :5001 --libp2p :30301 --jsonrpc :10001 \
     --seal --log-level DEBUG --relayer
     ```
 
@@ -154,11 +154,4 @@ The deployment guides will cover the steps outlined below. If you are deploying 
 
 !!! caution "Content disclaimer"
 
-      Please view the third-party content disclaimer [<ins>here</ins>]/disclaimer/).
 
-
-| Platform | Guide |
-| --- | --- |
-| Amazon Web Services | To set up a devnet on AWS, you can refer to the AWS deployment guide available [<ins>here</ins>](https://github.com/maticnetwork/terraform-polygon-supernets). The guide provides comprehensive instructions on how to use Terraform to set up a Virtual Private Cloud (VPC), subnets, security groups, and EC2 instances, followed by instructions on configuring nodes using Ansible. |
-| Microsoft Azure | To set up a devnet on Azure, you can refer to the Azure deployment guide available [<ins>here</ins>](https://github.com/caleteeter/polygon-azure). This repository offers an Azure template that can be deployed through the Azure and Bicep CLI, or directly through the "Deploy to Azure" button. Additionally, the deployment can be viewed via the "Visualize" button available in the repository. |
-| Google Cloud Platform | To set up a devnet on GCP, you can refer to the GCP deployment guide available [<ins>here</ins>](https://github.com/IntellectEU/gcp-polygon-supernets). The guide provides comprehensive instructions on how to use Terraform to set up a Virtual Private Cloud (VPC), subnets, firewall rules, the Service Account and GCE instances, followed by instructions on configuring nodes using Ansible. |

@@ -20,8 +20,8 @@ import (
 	"github.com/TeamFoxx2025/LadyFoxx/types"
 	bolt "go.etcd.io/bbolt"
 
-	"github.com/0xPolygon/go-ibft/messages"
-	"github.com/0xPolygon/go-ibft/messages/proto"
+	"github.com/tarality/0xTaral/messages"
+	"github.com/tarality/0xTaral/messages/proto"
 	hcf "github.com/hashicorp/go-hclog"
 )
 

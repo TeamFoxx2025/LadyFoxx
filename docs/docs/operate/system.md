@@ -19,7 +19,7 @@ This is the minimum hardware configuration required to set up a Edge-powered cha
 
 ## Prerequisites
 
-Before starting any of the tutorials, you should understand the basics of blockchain technology and be familiar with command-line interfaces. It would help if you also had the `polygon-edge` binary installed on your machine. Check out the [<ins>installation guide</ins>](install.md) for more information if you haven't already.
+Before starting any of the tutorials, you should understand the basics of blockchain technology and be familiar with command-line interfaces. It would help if you also had the `foxx-chain` binary installed on your machine. Check out the [<ins>installation guide</ins>](install.md) for more information if you haven't already.
 
 Ensure you have the following system prerequisites:
 
@@ -28,7 +28,7 @@ Ensure you have the following system prerequisites:
 | Golang (v1.15-1.19) | Install Go using CLI or package manager like [<ins>Snapcraft</ins>](https://snapcraft.io/go) for Linux, [<ins>Homebrew</ins>](https://formulae.brew.sh/formula/go) for Mac, or [<ins>Chocolatey</ins>](https://community.chocolatey.org/packages/golang) for Windows. Compatibility for other versions coming soon. |
 | Docker | Required to run the geth instance. Follow [<ins>official Docker documentation</ins>](https://www.docker.com/) for installation instructions. |
 | Internet connection | Stable internet connection required. |
-| Network security | Ensure that network ports used by Polygon Edge are not blocked by firewalls or other security measures. |
+| Network security | Ensure that network ports used by LadyFoxx are not blocked by firewalls or other security measures. |
 | Operating system | Ensure that the latest security patches and updates are installed. |
 
 !!! caution "Solidity v0.8.19 or earlier recommended"

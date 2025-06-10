@@ -7,7 +7,7 @@ The genesis file is a critical component in setting up a blockchain network, con
 
 Edge allow for customizable parameters such as the block gas limit, epoch size, and block rewards, which enable network operators to tailor the network to specific requirements. Additionally, Edge support allowlists and blocklists for transactions and validators, providing an extra layer of control and security to the network. These lists can be used to restrict or permit specific addresses, ensuring only authorized parties can participate in the network or execute transactions.
 
-To create the chain configuration, we use the `polygon-edge genesis` command, which generates the genesis file.
+To create the chain configuration, we use the `foxx-chain genesis` command, which generates the genesis file.
 
 <details>
 <summary>Common Flags ↓</summary>
@@ -22,7 +22,7 @@ To create the chain configuration, we use the `polygon-edge genesis` command, wh
 | `--burn-contract string` | The burn contract block and address (format: `<block>:<address>[:<burn> destination]`) | `--burn-contract 100:0x742d35Cc6634C0532925a3b844Bc454e4438f44e` |
 | `--chain-id uint`                         | The ID of the chain (default 100) | `--chain-id 1234` |
 | `--consensus string`                      | The consensus protocol to be used (default "polybft") | `--consensus ibft` |
-| `--dir string`                            | The directory for the Polygon Edge genesis data (default "./genesis.json") | `--dir ./genesis_data` |
+| `--dir string`                            | The directory for the LadyFoxx genesis data (default "./genesis.json") | `--dir ./genesis_data` |
 | `--epoch-reward uint`                     | Reward size for block sealing (default 1) | `--epoch-reward 1000000000000000000` |
 | `--epoch-size uint`                       | The epoch size for the chain (default 100000) | `--epoch-size 100` |
 | `--ibft-validator stringArray`            | Addresses to be used as IBFT validators, can be used multiple times. Needs to be present if ibft-validators-prefix-path is omitted | `--ibft-validator 0x742d35Cc6634C0532925a3b844Bc454e4438f44e` |
@@ -30,7 +30,7 @@ To create the chain configuration, we use the `polygon-edge genesis` command, wh
 | `--ibft-validators-prefix-path string`    | Prefix path for validator folder directory. Needs to be present if ibft-validator is omitted | `--ibft-validator-prefix-path ./validators` |
 | `--max-validator-count uint`              | The maximum number of validators in the validator set for PoS (default 9007199254740990) | `--max-validator-count 100` |
 | `--min-validator-count uint`              | The minimum number of validators in the validator set for PoS (default 1) | `--min-validator-count 4` |
-| `--name string`                           | The name for the chain (default "polygon-edge") | `--name "My Polygon Chain"` |
+| `--name string`                           | The name for the chain (default "foxx-chain") | `--name "My Foxx Chain"` |
 | `--native-token-config string`            | Native token configuration, provided in the following format: <name:symbol:decimals count:mintable flag:[mintable token owner address]> | `--native-token-config "MyToken:MTK:18:true/false"` |
 | `--pos`                                   | The flag indicating that the client should use Proof of Stake IBFT. Defaults to Proof of Authority if flag is not provided or false | `--is-pos true` |
 | `--premine stringArray` | The premined accounts and balances (format: `<address>[:<balance>]`). Default premined balance: 1000000000000000000000000 | `--premine 0x742d35Cc6634C0532925a3b844Bc454e4438f44e:1000000000000000000` |
@@ -140,7 +140,7 @@ We also add the `--transactions-allow-list-admin` flag to specify the admin addr
 **You can customize the initial chain state using the flags listed above.**
 
 ```bash
-./polygon-edge genesis --block-gas-limit 10000000 --epoch-size 10 \
+./foxx-chain genesis --block-gas-limit 10000000 --epoch-size 10 \
     --proxy-contracts-admin 0x61324166B0202DB1E7502924326262274Fa4358F \
     --validators-path ./ --validators-prefix test-chain- \
     --consensus polybft \
@@ -171,7 +171,7 @@ Genesis written to ./genesis.json
 
 ```json
 {
-    "name": "polygon-edge",
+    "name": "foxx-chain",
     "genesis": {
         "nonce": "0x0000000000000000",
         "timestamp": "0x0",
@@ -304,8 +304,8 @@ Genesis written to ./genesis.json
                 "governance": "0x61324166B0202DB1E7502924326262274Fa4358F",
                 "mintableNative": false,
                 "nativeTokenConfig": {
-                    "name": "Polygon",
-                    "symbol": "WMATIC",
+                    "name": "LadyFoxx",
+                    "symbol": "WLDFX",
                     "decimals": 18
                 },
                 "initialTrieRoot": "0x0000000000000000000000000000000000000000000000000000000000000000",
@@ -369,7 +369,7 @@ We also add the `--transactions-allow-list-admin` flag to specify the admin addr
 **You can customize the initial chain state using the flags listed above.**
 
 ```bash
-./polygon-edge genesis --block-gas-limit 10000000 --epoch-size 10 \
+./foxx-chain genesis --block-gas-limit 10000000 --epoch-size 10 \
     --proxy-contracts-admin 0x61324166B0202DB1E7502924326262274Fa4358F \
     --validators "/ip4/127.0.0.1/tcp/30301/p2p/16Uiu2HAmMYyzK7c649Tnn6XdqFLP7fpPB2QWdck1Ee9vj5a7Nhg8:0x61324166B0202DB1E7502924326262274Fa4358F:06d8d9e6af67c28e85ac400b72c2e635e83234f8a380865e050a206554049a222c4792120d84977a6ca669df56ff3a1cf1cfeccddb650e7aacff4ed6c1d4e37b055858209f80117b3c0a6e7a28e456d4caf2270f430f9df2ba37221f23e9bbd313c9ef488e1849cc5c40d18284d019dde5ed86770309b9c24b70ceff6167a6ca" \
     --validators "/ip4/127.0.0.1/tcp/30302/p2p/16Uiu2HAmLXVapjR2Yx3B1taCmHnckQ1ph2xrawBjW2kvSErps9CX:0xFE5E166BA5EA50c04fCa00b07b59966E6C2E9570:0601da8856a6d3d3bb0f3bcbb90ea7b8c0db8271b9203e6123c6804aa3fc5f810be33287968ca1af2be11839516850a6ffef2337d99e679b7531efbbea2e3bf727a053c0cbede71da3d5f489b6ad862ccd8bb0bfb7fa379e3395d3b1142594a73020e87d63c298a3a4eba0ace65727f8659bab6389b9448b72512db72bbe937f" \
@@ -401,7 +401,7 @@ Genesis written to ./genesis.json
 
 ```json
 {
-    "name": "polygon-edge",
+    "name": "foxx-chain",
     "genesis": {
         "nonce": "0x0000000000000000",
         "timestamp": "0x0",
@@ -514,8 +514,8 @@ Genesis written to ./genesis.json
                 "governance": "0x61324166B0202DB1E7502924326262274Fa4358F",
                 "mintableNative": false,
                 "nativeTokenConfig": {
-                    "name": "Polygon",
-                    "symbol": "WMATIC",
+                    "name": "LadyFoxx",
+                    "symbol": "WLDFX",
                     "decimals": 18
                 },
                 "initialTrieRoot": "0x0000000000000000000000000000000000000000000000000000000000000000",

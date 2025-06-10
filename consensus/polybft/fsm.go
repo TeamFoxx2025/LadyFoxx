@@ -7,8 +7,8 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/0xPolygon/go-ibft/messages"
-	"github.com/0xPolygon/go-ibft/messages/proto"
+	"github.com/tarality/0xTaral/messages"
+	"github.com/tarality/0xTaral/messages/proto"
 	"github.com/armon/go-metrics"
 	hcf "github.com/hashicorp/go-hclog"
 

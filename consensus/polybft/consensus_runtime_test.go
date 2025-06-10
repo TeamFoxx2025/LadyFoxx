@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0xPolygon/go-ibft/messages/proto"
+	"github.com/tarality/0xTaral/messages/proto"
 	"github.com/TeamFoxx2025/LadyFoxx/consensus"
 	"github.com/TeamFoxx2025/LadyFoxx/consensus/polybft/bitmap"
 	"github.com/TeamFoxx2025/LadyFoxx/consensus/polybft/signer"

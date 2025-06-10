@@ -119,10 +119,10 @@ function showhelp(){
 
 function initIbftConsensus() {
   echo "Running with ibft consensus"
-  ./polygon-edge secrets init --insecure --data-dir test-chain- --num 4
+  ./foxx-chain secrets init --insecure --data-dir test-chain- --num 4
 
-  node1_id=$(./polygon-edge secrets output --data-dir test-chain-1 | grep Node | head -n 1 | awk -F ' ' '{print $4}')
-  node2_id=$(./polygon-edge secrets output --data-dir test-chain-2 | grep Node | head -n 1 | awk -F ' ' '{print $4}')
+  node1_id=$(./foxx-chain secrets output --data-dir test-chain-1 | grep Node | head -n 1 | awk -F ' ' '{print $4}')
+  node2_id=$(./foxx-chain secrets output --data-dir test-chain-2 | grep Node | head -n 1 | awk -F ' ' '{print $4}')
 
   genesis_params="--consensus ibft --ibft-validators-prefix-path test-chain- \
     --bootnode /ip4/127.0.0.1/tcp/30301/p2p/$node1_id \
@@ -133,20 +133,20 @@ function initPolybftConsensus() {
   echo "Running with polybft consensus"
   genesis_params="--consensus polybft"
 
-  address1=$(./polygon-edge polybft-secrets --insecure --data-dir test-chain-1 | grep Public | head -n 1 | awk -F ' ' '{print $5}')
-  address2=$(./polygon-edge polybft-secrets --insecure --data-dir test-chain-2 | grep Public | head -n 1 | awk -F ' ' '{print $5}')
-  address3=$(./polygon-edge polybft-secrets --insecure --data-dir test-chain-3 | grep Public | head -n 1 | awk -F ' ' '{print $5}')
-  address4=$(./polygon-edge polybft-secrets --insecure --data-dir test-chain-4 | grep Public | head -n 1 | awk -F ' ' '{print $5}')
+  address1=$(./foxx-chain polybft-secrets --insecure --data-dir test-chain-1 | grep Public | head -n 1 | awk -F ' ' '{print $5}')
+  address2=$(./foxx-chain polybft-secrets --insecure --data-dir test-chain-2 | grep Public | head -n 1 | awk -F ' ' '{print $5}')
+  address3=$(./foxx-chain polybft-secrets --insecure --data-dir test-chain-3 | grep Public | head -n 1 | awk -F ' ' '{print $5}')
+  address4=$(./foxx-chain polybft-secrets --insecure --data-dir test-chain-4 | grep Public | head -n 1 | awk -F ' ' '{print $5}')
 }
 
 function createGenesis() {
-  ./polygon-edge genesis $genesis_params \
+  ./foxx-chain genesis $genesis_params \
     --block-gas-limit 10000000 \
     --premine 0x85da99c8a7c2c95964c8efd687e95e632fc533d6:1000000000000000000000 \
     --premine 0x0000000000000000000000000000000000000000 \
     --epoch-size 10 \
     --reward-wallet 0xDEADBEEF:1000000 \
-    --native-token-config "Polygon:MATIC:18:true:$address1" \
+    --native-token-config "LadyFoxx:LDFX:18:true:$address1" \
     --burn-contract 0:0x0000000000000000000000000000000000000000 \
     --proxy-contracts-admin 0x5aaeb6053f3e94c9b9a09f33669435e7ef1beaed
 }
@@ -156,9 +156,9 @@ function initRootchain() {
 
   if [ "$1" == "write-logs" ]; then
     echo "Writing rootchain server logs to the file..."
-    ./polygon-edge rootchain server 2>&1 | tee ./rootchain-server.log &
+    ./foxx-chain rootchain server 2>&1 | tee ./rootchain-server.log &
   else
-    ./polygon-edge rootchain server >/dev/null &
+    ./foxx-chain rootchain server >/dev/null &
   fi
 
   set +e
@@ -172,7 +172,7 @@ function initRootchain() {
 
   proxyContractsAdmin=0x5aaeb6053f3e94c9b9a09f33669435e7ef1beaed
 
-  ./polygon-edge polybft stake-manager-deploy \
+  ./foxx-chain polybft stake-manager-deploy \
     --jsonrpc http://127.0.0.1:8545 \
     --proxy-contracts-admin ${proxyContractsAdmin} \
     --test
@@ -180,7 +180,7 @@ function initRootchain() {
   stakeManagerAddr=$(cat genesis.json | jq -r '.params.engine.polybft.bridge.stakeManagerAddr')
   stakeToken=$(cat genesis.json | jq -r '.params.engine.polybft.bridge.stakeTokenAddr')
 
-  ./polygon-edge rootchain deploy \
+  ./foxx-chain rootchain deploy \
     --stake-manager ${stakeManagerAddr} \
     --stake-token ${stakeToken} \
     --proxy-contracts-admin ${proxyContractsAdmin} \
@@ -189,13 +189,13 @@ function initRootchain() {
   customSupernetManagerAddr=$(cat genesis.json | jq -r '.params.engine.polybft.bridge.customSupernetManagerAddr')
   supernetID=$(cat genesis.json | jq -r '.params.engine.polybft.supernetID')
 
-  ./polygon-edge rootchain fund \
+  ./foxx-chain rootchain fund \
     --stake-token ${stakeToken} \
     --mint \
     --addresses ${address1},${address2},${address3},${address4} \
     --amounts 1000000000000000000000000,1000000000000000000000000,1000000000000000000000000,1000000000000000000000000
 
-  ./polygon-edge polybft whitelist-validators \
+  ./foxx-chain polybft whitelist-validators \
     --addresses ${address1},${address2},${address3},${address4} \
     --supernet-manager ${customSupernetManagerAddr} \
     --private-key aa75e9a7d427efc732f8e4f1a5b7646adcc61fd5bae40f80d13c8419c9f43d6d \
@@ -205,12 +205,12 @@ function initRootchain() {
   while [ $counter -le 4 ]; do
     echo "Registering validator: ${counter}"
 
-    ./polygon-edge polybft register-validator \
+    ./foxx-chain polybft register-validator \
       --supernet-manager ${customSupernetManagerAddr} \
       --data-dir test-chain-${counter} \
       --jsonrpc http://127.0.0.1:8545
 
-    ./polygon-edge polybft stake \
+    ./foxx-chain polybft stake \
       --data-dir test-chain-${counter} \
       --amount 1000000000000000000000000 \
       --supernet-id ${supernetID} \
@@ -221,7 +221,7 @@ function initRootchain() {
     ((counter++))
   done
 
-  ./polygon-edge polybft supernet \
+  ./foxx-chain polybft supernet \
     --private-key aa75e9a7d427efc732f8e4f1a5b7646adcc61fd5bae40f80d13c8419c9f43d6d \
     --supernet-manager ${customSupernetManagerAddr} \
     --stake-manager ${stakeManagerAddr} \
@@ -233,30 +233,30 @@ function initRootchain() {
 function startServerFromBinary() {
   if [ "$1" == "write-logs" ]; then
     echo "Writing validators logs to the files..."
-    ./polygon-edge server --data-dir ./test-chain-1 --chain genesis.json \
+    ./foxx-chain server --data-dir ./test-chain-1 --chain genesis.json \
       --grpc-address :10000 --libp2p :30301 --jsonrpc :10002 --relayer \
       --num-block-confirmations 2 --seal --log-level DEBUG 2>&1 | tee ./validator-1.log &
-    ./polygon-edge server --data-dir ./test-chain-2 --chain genesis.json \
+    ./foxx-chain server --data-dir ./test-chain-2 --chain genesis.json \
       --grpc-address :20000 --libp2p :30302 --jsonrpc :20002 \
       --num-block-confirmations 2 --seal --log-level DEBUG 2>&1 | tee ./validator-2.log &
-    ./polygon-edge server --data-dir ./test-chain-3 --chain genesis.json \
+    ./foxx-chain server --data-dir ./test-chain-3 --chain genesis.json \
       --grpc-address :30000 --libp2p :30303 --jsonrpc :30002 \
       --num-block-confirmations 2 --seal --log-level DEBUG 2>&1 | tee ./validator-3.log &
-    ./polygon-edge server --data-dir ./test-chain-4 --chain genesis.json \
+    ./foxx-chain server --data-dir ./test-chain-4 --chain genesis.json \
       --grpc-address :40000 --libp2p :30304 --jsonrpc :40002 \
       --num-block-confirmations 2 --seal --log-level DEBUG 2>&1 | tee ./validator-4.log &
     wait
   else
-    ./polygon-edge server --data-dir ./test-chain-1 --chain genesis.json \
+    ./foxx-chain server --data-dir ./test-chain-1 --chain genesis.json \
       --grpc-address :10000 --libp2p :30301 --jsonrpc :10002 --relayer \
       --num-block-confirmations 2 --seal --log-level DEBUG &
-    ./polygon-edge server --data-dir ./test-chain-2 --chain genesis.json \
+    ./foxx-chain server --data-dir ./test-chain-2 --chain genesis.json \
       --grpc-address :20000 --libp2p :30302 --jsonrpc :20002 \
       --num-block-confirmations 2 --seal --log-level DEBUG &
-    ./polygon-edge server --data-dir ./test-chain-3 --chain genesis.json \
+    ./foxx-chain server --data-dir ./test-chain-3 --chain genesis.json \
       --grpc-address :30000 --libp2p :30303 --jsonrpc :30002 \
       --num-block-confirmations 2 --seal --log-level DEBUG &
-    ./polygon-edge server --data-dir ./test-chain-4 --chain genesis.json \
+    ./foxx-chain server --data-dir ./test-chain-4 --chain genesis.json \
       --grpc-address :40000 --libp2p :30304 --jsonrpc :40002 \
       --num-block-confirmations 2 --seal --log-level DEBUG &
     wait
@@ -292,7 +292,7 @@ rm -rf test-chain-*
 rm -f genesis.json
 
 # Build binary
-go build -o polygon-edge .
+go build -o foxx-chain .
 
 # If --docker flag is set run docker environment otherwise run from binary
 case "$2" in

@@ -3,7 +3,7 @@ package wallet
 import (
 	"fmt"
 
-	"github.com/0xPolygon/go-ibft/messages/proto"
+	"github.com/tarality/0xTaral/messages/proto"
 	"github.com/umbracle/ethgo"
 	protobuf "google.golang.org/protobuf/proto"
 

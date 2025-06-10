@@ -69,7 +69,7 @@ This command deposits ERC-20 tokens from a rootchain to a Edge-powered chain.
 - Replace `minter-key` with the private key of the minter account. If the private key is provided, tokens are minted to the sender account prior to depositing them.
 
 ```bash
-./polygon-edge bridge deposit-erc20 \
+./foxx-chain bridge deposit-erc20 \
     --sender-key <hex_encoded_depositor_private_key> \
     --receivers <receivers_addresses> \
     --amounts <amounts> \
@@ -93,7 +93,7 @@ In this example, we're depositing ERC-20 tokens to a test Edge instance:
 - We're using a minter key of `0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef`.
 
 ```bash
-./polygon-edge bridge deposit-erc20 \
+./foxx-chain bridge deposit-erc20 \
     --sender-key 0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef \
     --receivers 0x1111111111111111111111111111111111111111,0x2222222222222222222222222222222222222222 \
     --amounts 100,200 \
@@ -123,7 +123,7 @@ This command deposits ERC-721 tokens from a rootchain to a Edge-powered chain.
 - Replace `minter-key` with the private key of the minter account. If the private key is provided, tokens are minted to the sender account prior to depositing them.
 
 ```bash
-./polygon-edge bridge deposit-erc721 \
+./foxx-chain bridge deposit-erc721 \
     --sender-key <hex_encoded_depositor_private_key> \
     --receivers <receivers_addresses> \
     --token-ids <token_ids> \
@@ -146,7 +146,7 @@ In this example, we're depositing ERC-721 tokens to a test Edge instance:
 - We're using a minter key of `0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef`.
 
 ```bash
-./polygon-edge bridge deposit-erc721 \
+./foxx-chain bridge deposit-erc721 \
     --sender-key 0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef \
     --receivers 0x1111111111111111111111111111111111111111,0x2222222222222222222222222222222222222222 \
     --token-ids 123,456 \
@@ -176,7 +176,7 @@ This command deposits ERC-1155 tokens from the rootchain to the Edge-powered cha
 - Replace `minter-key` with the private key of the minter account. If the private key is provided, tokens are minted to the sender account prior to depositing them.
 
 ```bash
-./polygon-edge bridge deposit-erc1155 \
+./foxx-chain bridge deposit-erc1155 \
     --sender-key <depositor_private_key> \
     --receivers <receivers_addresses> \
     --amounts <amounts> \
@@ -201,7 +201,7 @@ In this example, we're depositing ERC-1155 tokens to a test Edge instance:
 - We're using a minter key of `0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef`.
 
 ```bash
-./polygon-edge bridge deposit-erc1155 \
+./foxx-chain bridge deposit-erc1155 \
     --sender-key 0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef \
     --receivers 0x0123456789abcdef0123456789abcdef01234567,0x89abcdef0123456789abcdef0123456789abcdef \
     --amounts 10,20 \

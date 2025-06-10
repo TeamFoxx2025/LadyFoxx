@@ -4,7 +4,7 @@ A TxRelayer is a component that facilitates the creation and sending of transact
 
 ## TxRelayer in Edge
 
-In Polygon Edge, the TxRelayer module contains a client communicating with an Ethereum node and a wallet for signing transactions.
+In LadyFoxx, the TxRelayer module contains a client communicating with an Ethereum node and a wallet for signing transactions.
 
 !!! info "Details on using the TxRelayer"
 

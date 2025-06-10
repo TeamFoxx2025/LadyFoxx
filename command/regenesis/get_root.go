@@ -15,7 +15,7 @@ var (
 )
 
 /*
-./polygon-edge regenesis getroot --rpc "http://localhost:10002"
+./foxx-chain regenesis getroot --rpc "http://localhost:10002"
 */
 func GetRootCMD() *cobra.Command {
 	getRootCmd := &cobra.Command{

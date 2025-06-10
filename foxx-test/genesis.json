@@ -4,7 +4,7 @@
         "nonce": "0x0000000000000000",
         "timestamp": "0x0",
         "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000f90129f90120f84694b8c6e8cae888b4891389e87d89de0e916123ea05b08171fddf73482d161f2869a5fe70690c54b01eb1e8d061ff37ee1dfb2083d9f1a73519e47d0125e54cab097e75db61b7f846947d3d3ff82889f5fe1381de08b647c1a30490719bb0acfc3ed54b669f9938d0d52c6665d999c1351d68401655e26203106ef152b41a5922706580d0d4a3f4db9cccaf7d3ad3f846943ebcd8c2cba16591b03f8dd7f96b7fafb976a3e3b0a58845f5516960b213268145e6498d946b15d26a6c7dff240c5b2281f05071672b28f9cab3c77921c29e7eaf425ced4af8469406db71ea2cb87ebd09363daeda388d0f7dc86eceb0b94fb765cfb5a833ac327b10ae8ccee051c23842fe55636bb64c47639408e51d1e260e9c31cc41742c45fb22530de25e80c28080c080",
-        "gasLimit": "0x3b9aca00",
+        "gasLimit": "0x63B6A000",
         "difficulty": "0x1",
         "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
         "coinbase": "0x0000000000000000000000000000000000000000",
@@ -57,9 +57,9 @@
         "number": "0x0",
         "gasUsed": "0x70000",
         "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-        "baseFee": "0x3b9aca00",
+        "baseFee": "0x4A817C800",
         "baseFeeEM": "0x2",
-        "baseFeeChangeDenom": "0x8"
+        "baseFeeChangeDenom": "0x64"
     },
     "params": {
         "forks": {
@@ -104,7 +104,7 @@
         "engine": {
             "ibft": {
                 "blockTime": 5000000000,
-                "epochSize": 100,
+                "epochSize": 10000,
                 "type": "PoS",
                 "validator_type": "bls"
             }
@@ -119,3 +119,4 @@
         "/ip4/127.0.0.1/tcp/10001/p2p/16Uiu2HAm4bMovEvWEpaV73f7P7ievFh3bwtadinnHPbMYyKtQeSg"
     ]
 }
+

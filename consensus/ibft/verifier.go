@@ -5,8 +5,8 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 
-	"github.com/0xPolygon/go-ibft/messages"
-	protoIBFT "github.com/0xPolygon/go-ibft/messages/proto"
+	"github.com/tarality/0xTaral/messages"
+	protoIBFT "github.com/tarality/0xTaral/messages/proto"
 	"github.com/TeamFoxx2025/LadyFoxx/consensus/ibft/signer"
 	"github.com/TeamFoxx2025/LadyFoxx/crypto"
 	"github.com/TeamFoxx2025/LadyFoxx/types"

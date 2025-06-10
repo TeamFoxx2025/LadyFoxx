@@ -1,7 +1,7 @@
 package ibft
 
 import (
-	"github.com/0xPolygon/go-ibft/messages/proto"
+	"github.com/tarality/0xTaral/messages/proto"
 	"github.com/TeamFoxx2025/LadyFoxx/network"
 	"github.com/TeamFoxx2025/LadyFoxx/types"
 	"github.com/libp2p/go-libp2p/core/peer"

@@ -3,7 +3,7 @@ package wallet
 import (
 	"testing"
 
-	"github.com/0xPolygon/go-ibft/messages/proto"
+	"github.com/tarality/0xTaral/messages/proto"
 	"github.com/stretchr/testify/require"
 
 	"github.com/TeamFoxx2025/LadyFoxx/bls"
